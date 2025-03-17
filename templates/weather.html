@@ -1,0 +1,22 @@
+{% include 'header1.html' %}
+
+<div align="right">
+    <form>
+    <input type="text" name="weather" placeholder="Search by city...">
+    <button type="submit">weather</button>
+    </form>
+</div>
+
+{% if error %}
+        <p>{{ error }}</p>
+    {% endif %}
+
+    {% if weather_data %}
+        <h2>Weather for {{ weather_data.location.name }}, {{ weather_data.location.country }}</h2>
+        <p>Temperature: {{ weather_data.current.temp_c }}°C</p>
+        <p>Condition: {{ weather_data.current.condition.text }}</p>
+        <img src="{{ weather_data.current.condition.icon }}" alt="{{ weather_data.current.condition.text }}">
+    {% endif %}
+
+
+{% include 'footer.html' %}
